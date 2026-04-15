@@ -1,13 +1,46 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>altwine</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>altwine</title>
+		<link rel="stylesheet" href="/src/style.css" />
+		<script type="module" src="/src/main.ts"></script>
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="header-content">
+				<div class="profile-brand">
+					<div class="icon-placeholder">A</div>
+					<div class="brand-info">
+						<span class="brand-title">altwine.dev</span>
+						<span class="brand-subtitle">мне нравится программирование</span>
+					</div>
+				</div>
+				<nav class="nav-buttons">
+					<a href="https://github.com/altwine" class="nav-btn">Github</a>
+				</nav>
+			</div>
+		</header>
+
+		<div class="scroll-hint">
+			<div class="arrow">↓</div>
+			<span class="hint-text"></span>
+		</div>
+
+		<div id="canvas-container"></div>
+
+		<div id="virtual-scroll-content">
+			<div class="spacer"></div>
+
+			<section id="projects" class="content-section">
+				<div class="section-inner">
+					<h2>Проекты</h2>
+					<div class="projects-grid" id="projects-grid"></div>
+				</div>
+			</section>
+		</div>
+
+		<footer class="mini-footer">© 2026 altwine.dev</footer>
+	</body>
 </html>
