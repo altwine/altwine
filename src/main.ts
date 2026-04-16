@@ -30,15 +30,18 @@ import diskFrag from "../assets/shaders/disk.frag";
 
 let renderer: WebGLRenderer;
 
-const canvasContainer = document.getElementById("canvas-container")!;
+const canvas = document.querySelector("canvas") as HTMLCanvasElement;
 
 const scene = new Scene();
 const camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-renderer = new WebGLRenderer({ antialias: false, powerPreference: "high-performance" });
+renderer = new WebGLRenderer({
+	canvas: canvas,
+	antialias: false,
+	powerPreference: "high-performance",
+});
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-canvasContainer.appendChild(renderer.domElement);
 
 const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));

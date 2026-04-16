@@ -140,3 +140,8 @@ footer {
 	text-align: center;
 	user-select: none;
 }
+
+canvas {
+	position: absolute;
+	z-index: -1;
+}
