@@ -1,6 +1,7 @@
 @font-face {
 	font-family: "Geist";
 	src: url("/assets/fonts/geist.woff2") format("woff2");
+	font-display: swap;
 }
 
 :root {
@@ -24,7 +25,6 @@
 }
 
 body {
-	margin: 0;
 	background-color: var(--bg-color);
 	color: var(--text-primary);
 	font-family: "Geist", Arial, sans-serif;
@@ -82,9 +82,10 @@ header:hover {
 	flex-direction: column;
 }
 
-.icon-placeholder {
-	width: 40px;
-	height: 40px;
+.brand-icon {
+	width: 30px;
+	height: 30px;
+	padding: 5px;
 	background: linear-gradient(135deg, #ffaa00, #ff4400);
 	border-radius: 10px;
 	display: flex;
