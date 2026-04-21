@@ -24,18 +24,21 @@
 	--max-width: 920px;
 }
 
+* {
+	margin: 0;
+}
+
 body {
+	display: flex;
+	justify-content: center;
 	background-color: var(--bg-color);
 	color: var(--text-primary);
 	font-family: "Geist", Arial, sans-serif;
 	overflow: hidden;
-	touch-action: none;
 }
 
 header {
 	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
 	width: var(--width);
 	max-width: var(--max-width);
 	top: 30px;
@@ -93,7 +96,12 @@ header:hover {
 	justify-content: center;
 	font-weight: bold;
 	box-shadow: 0 0 10px rgba(255, 100, 0, 0.25);
+	pointer-events: none;
 	user-select: none;
+}
+
+canvas {
+	pointer-events: none;
 }
 
 .brand-title {
@@ -110,6 +118,7 @@ header:hover {
 .nav-buttons {
 	display: flex;
 	gap: 10px;
+	user-select: none;
 }
 
 .nav-btn {
@@ -124,7 +133,6 @@ header:hover {
 	border-radius: 8px;
 	background: rgba(0, 0, 0, 0.2);
 	transition: all 0.3s ease;
-	user-select: none;
 }
 
 .nav-btn:hover {
@@ -134,19 +142,16 @@ header:hover {
 	box-shadow: 0 0 15px rgba(255, 170, 0, 0.2);
 }
 
+.nav-btn-icon {
+	pointer-events: none;
+}
+
 footer {
 	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
 	bottom: 30px;
 	padding: 8px 20px;
 	font-size: 0.8rem;
 	color: var(--text-muted);
 	text-align: center;
 	user-select: none;
-}
-
-canvas {
-	position: absolute;
-	z-index: -1;
 }
