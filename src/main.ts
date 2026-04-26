@@ -28,14 +28,12 @@ import starFrag from "../assets/shaders/star.frag";
 import diskVert from "../assets/shaders/disk.vert";
 import diskFrag from "../assets/shaders/disk.frag";
 
-let renderer: WebGLRenderer;
-
 const canvas = document.querySelector("canvas") as HTMLCanvasElement;
 
 const scene = new Scene();
 const camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-renderer = new WebGLRenderer({
+let renderer = new WebGLRenderer({
 	canvas: canvas,
 	antialias: false,
 	powerPreference: "high-performance",
@@ -45,7 +43,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
-const bloomPass = new UnrealBloomPass(new Vector2(window.innerWidth / 1.5, window.innerHeight / 1.5), 0.025, 0.5, 0.75);
+const bloomPass = new UnrealBloomPass(new Vector2(window.innerWidth / 2.5, window.innerHeight / 2.5), 0.025, 0.5, 0.75);
 composer.addPass(bloomPass);
 
 function createSoftGlowTexture() {
@@ -207,6 +205,15 @@ function animate() {
 }
 
 animate();
+
+const menuButton = document.getElementById("menu-btn") as HTMLAnchorElement;
+const navButtons = document.querySelectorAll(".nav-btn:not(:last-of-type)") as NodeListOf<HTMLAnchorElement>;
+let visible = false;
+
+menuButton.addEventListener("click", () => {
+	visible = !visible;
+	navButtons.forEach((e) => ((e.style.display as any) = visible ? "flex" : null));
+});
 
 window.addEventListener("resize", () => {
 	camera.aspect = window.innerWidth / window.innerHeight;

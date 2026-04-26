@@ -38,6 +38,9 @@ body {
 }
 
 header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	position: absolute;
 	width: var(--width);
 	max-width: var(--max-width);
@@ -66,12 +69,6 @@ header:hover {
 	box-shadow:
 		0 20px 40px -5px var(--accent-strong),
 		inset 0 -15px 30px -5px rgba(255, 85, 0, 0.2);
-}
-
-.header-content {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 }
 
 .profile-brand {
@@ -131,8 +128,9 @@ canvas {
 	padding: 8px 16px;
 	border: 1px solid rgba(255, 255, 255, 0.1);
 	border-radius: 8px;
-	background: rgba(0, 0, 0, 0.2);
+	background: var(--glass-bg-hover);
 	transition: all 0.3s ease;
+	cursor: pointer;
 }
 
 .nav-btn:hover {
@@ -144,6 +142,29 @@ canvas {
 
 .nav-btn-icon {
 	pointer-events: none;
+}
+
+#menu-btn {
+	display: none;
+	padding: 8px;
+}
+
+@media screen and (max-width: 620px) {
+	.nav-btn {
+		position: absolute;
+		right: 20px;
+		display: none;
+	}
+	.nav-btn:nth-child(1) {
+		top: 72px;
+	}
+	.nav-btn:nth-child(2) {
+		top: 120px;
+	}
+	#menu-btn {
+		position: unset;
+		display: flex;
+	}
 }
 
 footer {
