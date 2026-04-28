@@ -1,7 +1,11 @@
 {
 	"name": "altwine",
+	"description": "My personal website",
+	"author": "altwine",
+	"license": "MIT",
+	"homepage": "https://altwine.dev",
 	"private": true,
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
@@ -9,13 +13,13 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
+		"@types/three": "^0.184.0",
 		"typescript": "~5.9.3",
-		"vite": "^8.0.1",
+		"vite": "^8.0.10",
 		"vite-plugin-glsl": "^1.6.0",
-		"vite-plugin-singlefile": "^2.3.2"
+		"vite-plugin-singlefile": "^2.3.3"
 	},
 	"dependencies": {
-		"@types/three": "^0.183.1",
-		"three": "^0.183.2"
+		"three": "^0.184.0"
 	}
 }
