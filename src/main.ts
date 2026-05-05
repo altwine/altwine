@@ -24,9 +24,8 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
 import starVert from "../assets/shaders/star.vert";
-import starFrag from "../assets/shaders/star.frag";
 import diskVert from "../assets/shaders/disk.vert";
-import diskFrag from "../assets/shaders/disk.frag";
+import commonFrag from "../assets/shaders/common.frag";
 
 const canvas = document.querySelector("canvas") as HTMLCanvasElement;
 
@@ -100,7 +99,7 @@ function createStars(count: number) {
 	const mat = new ShaderMaterial({
 		uniforms: { uTime: { value: 0 }, pointTexture: { value: softGlowTexture } },
 		vertexShader: starVert,
-		fragmentShader: starFrag,
+		fragmentShader: commonFrag,
 		transparent: true,
 		depthWrite: false,
 		blending: AdditiveBlending,
@@ -138,7 +137,7 @@ function createDisk(innerR: number, outerR: number, count: number, cIn: Color, c
 			uSpeed: { value: speed.toFixed(1) },
 		},
 		vertexShader: diskVert,
-		fragmentShader: diskFrag,
+		fragmentShader: commonFrag,
 		transparent: true,
 		depthWrite: false,
 		blending: AdditiveBlending,
@@ -161,9 +160,9 @@ const starMesh = createStars(15500);
 scene.add(starMesh);
 
 function updateCameraForScreenSize() {
-	const aspect = window.innerWidth / window.innerHeight;
+	camera.aspect = window.innerWidth / window.innerHeight;
 	const fovRad = MathUtils.degToRad(camera.fov);
-	const visW = 2 * Math.tan(fovRad / 2) * aspect;
+	const visW = 2 * Math.tan(fovRad / 2) * camera.aspect;
 	const targetZ = 14.0 / 0.95 / visW;
 	camera.position.z = Math.max(targetZ, 8);
 	camera.updateProjectionMatrix();
@@ -215,14 +214,6 @@ menuButton.addEventListener("click", () => {
 	navButtons.forEach((e) => ((e.style.display as any) = visible ? "flex" : null));
 });
 
-window.addEventListener("resize", () => {
-	camera.aspect = window.innerWidth / window.innerHeight;
-	updateCameraForScreenSize();
-});
-
-window.addEventListener("orientationchange", () => {
-	camera.aspect = window.innerWidth / window.innerHeight;
-	updateCameraForScreenSize();
-});
-
+window.addEventListener("resize", () => updateCameraForScreenSize);
+window.addEventListener("orientationchange", () => updateCameraForScreenSize);
 updateCameraForScreenSize();
