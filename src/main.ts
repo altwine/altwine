@@ -27,14 +27,11 @@ import starVert from "../assets/shaders/star.vert";
 import diskVert from "../assets/shaders/disk.vert";
 import commonFrag from "../assets/shaders/common.frag";
 
-const canvas = document.querySelector("canvas") as HTMLCanvasElement;
-
 const scene = new Scene();
 const camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 let renderer = new WebGLRenderer({
-	canvas: canvas,
-	antialias: false,
+	canvas: document.querySelector("canvas") as HTMLCanvasElement,
 	powerPreference: "high-performance",
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -42,7 +39,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
-const bloomPass = new UnrealBloomPass(new Vector2(window.innerWidth / 2.5, window.innerHeight / 2.5), 0.025, 0.5, 0.75);
+const bloomPass = new UnrealBloomPass(new Vector2(window.innerWidth / 5, window.innerHeight / 5), 0.025, 0.5, 0.75);
 composer.addPass(bloomPass);
 
 function createSoftGlowTexture() {
@@ -214,6 +211,6 @@ menuButton.addEventListener("click", () => {
 	navButtons.forEach((e) => ((e.style.display as any) = visible ? "flex" : null));
 });
 
-window.addEventListener("resize", () => updateCameraForScreenSize);
-window.addEventListener("orientationchange", () => updateCameraForScreenSize);
+window.addEventListener("resize", updateCameraForScreenSize);
+window.addEventListener("orientationchange", updateCameraForScreenSize);
 updateCameraForScreenSize();
