@@ -208,7 +208,15 @@ let visible = false;
 
 menuButton.addEventListener("click", () => {
 	visible = !visible;
-	navButtons.forEach((e) => ((e.style.display as any) = visible ? "flex" : null));
+	if (visible) {
+		menuButton.ariaExpanded = "true";
+		menuButton.setAttribute("aria-label", "Закрыть меню");
+		navButtons.forEach((e) => (e.style.display = "flex"));
+	} else {
+		menuButton.ariaExpanded = "false";
+		menuButton.setAttribute("aria-label", "Открыть меню");
+		navButtons.forEach((e) => e.style.removeProperty("display"));
+	}
 });
 
 window.addEventListener("resize", updateCameraForScreenSize);

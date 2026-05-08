@@ -88,10 +88,6 @@ header:hover {
 	padding: 5px;
 	background: linear-gradient(135deg, #ffaa00, #ff4400);
 	border-radius: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-weight: bold;
 	box-shadow: 0 0 10px rgba(255, 100, 0, 0.25);
 	pointer-events: none;
 	user-select: none;
@@ -99,6 +95,7 @@ header:hover {
 
 canvas {
 	pointer-events: none;
+	user-select: none;
 }
 
 .brand-title {

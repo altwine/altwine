@@ -1,11 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
-		<title>altwine</title>
+		<title>altwine — личный сайт</title>
 		<meta name="author" content="altwine" />
 		<meta name="theme-color" content="#000000" />
+		<link rel="canonical" href="https://altwine.dev/" />
 		<link rel="stylesheet" href="/src/style.css" />
 		<link rel="icon" href="./favicon.svg" />
 		<script type="module" src="/src/main.ts"></script>
@@ -13,7 +14,14 @@
 	<body>
 		<header>
 			<div class="profile-brand">
-				<img class="brand-icon" width="40px" height="40px" draggable="false" src="/assets/icons/brand.svg" />
+				<img
+					class="brand-icon"
+					width="40px"
+					height="40px"
+					draggable="false"
+					alt="Логотип altwine"
+					src="/assets/icons/brand.svg"
+				/>
 				<div class="brand-info">
 					<span class="brand-title">altwine.dev</span>
 					<span class="brand-subtitle">мне нравится программирование</span>
@@ -24,6 +32,7 @@
 					<img
 						class="nav-btn-icon"
 						draggable="false"
+						alt=""
 						width="24px"
 						height="24px"
 						src="/assets/icons/github.svg"
@@ -34,16 +43,18 @@
 					<img
 						class="nav-btn-icon"
 						draggable="false"
+						alt=""
 						width="24px"
 						height="24px"
 						src="/assets/icons/youtube.svg"
 					/>
 					<span>YouTube</span>
 				</a>
-				<a class="nav-btn" id="menu-btn">
+				<a class="nav-btn" id="menu-btn" role="button" aria-label="Открыть меню" aria-expanded="false">
 					<img
 						class="nav-btn-icon"
 						draggable="false"
+						alt=""
 						width="24px"
 						height="24px"
 						src="/assets/icons/burger.svg"
@@ -51,7 +62,7 @@
 				</a>
 			</nav>
 		</header>
-		<canvas></canvas>
+		<canvas role="img" aria-label="Анимированный фон"></canvas>
 		<footer>© 2026 altwine</footer>
 	</body>
 </html>
