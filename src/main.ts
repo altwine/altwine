@@ -39,7 +39,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
-const bloomPass = new UnrealBloomPass(new Vector2(window.innerWidth / 5, window.innerHeight / 5), 0.025, 0.5, 0.75);
+const bloomPass = new UnrealBloomPass(new Vector2(window.innerWidth / 5, window.innerHeight / 5), 0.0125, 0.25, 0.75);
 composer.addPass(bloomPass);
 
 function createSoftGlowTexture() {
@@ -48,8 +48,7 @@ function createSoftGlowTexture() {
 	canvas.width = size;
 	canvas.height = size;
 
-	const ctx = canvas.getContext("2d");
-	if (!ctx) return null;
+	const ctx = canvas.getContext("2d")!;
 
 	const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
 	gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
@@ -153,7 +152,7 @@ const diskInner = createDisk(1.2, 2.8, 9000, new Color(0xffeebb), new Color(0xff
 const diskOuter = createDisk(2.5, 4.5, 9000, new Color(0xff5500), new Color(0x550000), 0.75);
 group.add(diskInner, diskOuter);
 
-const starMesh = createStars(15500);
+const starMesh = createStars(10000);
 scene.add(starMesh);
 
 function updateCameraForScreenSize() {
