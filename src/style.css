@@ -105,6 +105,7 @@ canvas {
 }
 
 .brand-subtitle {
+	font-weight: normal;
 	font-size: 0.75rem;
 	color: var(--text-secondary);
 }
